@@ -1,23 +1,7 @@
 import "./static/css/reset.css";
 import "./static/css/style.css";
-
-function createTask(title, description, dueDate, priority) {
-  return {
-    title,
-    description,
-    dueDate,
-    priority,
-  };
-}
-
-function createProject(title) {
-  const tasks = [];
-
-  const addTask = (task) => tasks.push(task);
-  const removeTask = (task) => tasks.splice(tasks.indexOf(task), 1);
-
-  return { title, tasks, addTask, removeTask };
-}
+import { createTask } from "./static/js/components/task";
+import { createProject } from "./static/js/components/project";
 
 const project = createProject("New project");
 
