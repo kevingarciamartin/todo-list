@@ -1,2 +1,2 @@
-import "./assets/styles/reset.css";
-import "./assets/styles/style.css";
+import "./static/css/reset.css";
+import "./static/css/style.css";
