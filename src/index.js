@@ -2,21 +2,32 @@ import "./static/css/reset.css";
 import "./static/css/style.css";
 import { createTask } from "./static/js/components/task";
 import { createProject } from "./static/js/components/project";
+import { formatISO9075, addDays } from "date-fns";
 
-const project = createProject("New project");
+const initApp = (() => {
+  const projects = [];
+  const defaultProject = createProject("Default Project");
 
-const task1 = createTask("Task 1", "Task description", "2024.10.28", 0);
-const task2 = createTask("Task 2", "Task description", "2024.10.28", 2);
-const task3 = createTask("Task 3", "Task description", "2024.10.28", 2);
-const task4 = createTask("Task 4", "Task description", "2024.10.28", 2);
+  projects.push(defaultProject);
 
-console.log(project.tasks);
-project.addTask(task1);
-project.addTask(task2);
-project.addTask(task3);
-project.addTask(task4);
-console.log(project.tasks);
-project.tasks.forEach(task => console.log(task))
-project.removeTask(task2);
-console.log(project.tasks);
-project.tasks.forEach(task => console.log(task))
+  defaultProject.addTask(
+    createTask("CCC", "Task 1 desc.", new Date("2016"), 1)
+  );
+  defaultProject.addTask(
+    createTask("AAA", "Task 2 desc.", new Date("2001"), 0)
+  );
+  defaultProject.addTask(
+    createTask("BBB", "Task 3 desc.", new Date("2010"), 2)
+  );
+  
+  const tasksAsc = defaultProject.getSortedTasks('priority', 'ascending');
+  const tasksDesc = defaultProject.getSortedTasks('priority', 'descending');
+  const tasks = defaultProject.getTasks();
+  
+  tasks.forEach((task) => console.log(task));
+  console.log('')
+  tasksAsc.forEach((task) => console.log(task));
+  console.log("");
+  tasksDesc.forEach((task) => console.log(task));
+  console.log("");
+})();
