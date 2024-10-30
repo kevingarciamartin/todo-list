@@ -24,17 +24,35 @@
 }
 
 body {
+  --_body-padding: 1rem;
+  --_menu-width: 20rem;
+
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns:
+    var(--_menu-width) [main-start]
+    var(--_body-padding) [content-start]
+    1fr [content-end] var(--_body-padding) [main-end];
 
   font-family: var(--ff-base);
 }
 
 #menu {
+  --_menu-padding: var(--_body-padding, 1rem);
+
+  position: fixed;
+
   background-color: var(--clr-background-aside);
-  width: 20rem;
+  height: 100vh;
+  width: var(--_menu-width);
+  padding: var(--_menu-padding);
 }
 
 #content {
+  --_main-padding: var(--_body-padding, 1rem);
+
+  grid-column: main-start / main-end;
+
   background-color: var(--clr-background-main);
+  padding-block: var(--_main-padding);
+  height: 300vh;
 }
