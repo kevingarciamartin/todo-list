@@ -30,20 +30,40 @@ const app = (() => {
   const tasksDesc = defaultProject.getSortedTasks("priority", "descending");
   const tasks = defaultProject.getTasks();
 
-  tasks.forEach((task) => console.log(task));
-  console.log("");
-  tasksAsc.forEach((task) => console.log(task));
-  console.log("");
-  tasksDesc.forEach((task) => console.log(task));
-  console.log("");
+  // tasks.forEach((task) => console.log(task));
+  // console.log("");
+  // tasksAsc.forEach((task) => console.log(task));
+  // console.log("");
+  // tasksDesc.forEach((task) => console.log(task));
+  // console.log("");
 
   return { projects };
 })();
 
 const renderApp = (() => {
   RenderProfile();
-
   app.projects.forEach((project) => RenderProjectToMenu(project));
-  const menu = document.querySelector("#menu");
-  const content = document.querySelector("#content");
+
+  const navButtons = document.querySelectorAll(".nav-btn");
+
+  navButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      // console.log(typeof event.target.dataset.projectTitle === 'string')
+      if (typeof event.target.dataset.projectTitle === "string") {
+        console.log(event.target.dataset.projectTitle);
+      } else if (button.id === "add-task") {
+        console.log("Add task");
+      } else if (button.id === "tasks") {
+        console.log("Tasks");
+      } else if (button.id === "today") {
+        console.log("Today");
+      } else if (button.id === "upcoming") {
+        console.log("Upcoming");
+      } else if (button.id === "completed") {
+        console.log("Completed");
+      } else if (button.id === "archived") {
+        console.log("Archived");
+      }
+    });
+  });
 })();
