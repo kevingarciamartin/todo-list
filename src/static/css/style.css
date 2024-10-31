@@ -53,7 +53,7 @@ body {
     display: grid;
     column-gap: 0.5rem;
     row-gap: 3rem;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
 
     img,
     svg {
@@ -73,7 +73,8 @@ body {
       margin: 0;
     }
 
-    header, ul li:not(:has(button)) {
+    header,
+    ul li:not(:has(button)) {
       padding-inline: var(--_nav-padding-inline);
     }
 
@@ -116,22 +117,6 @@ body {
           align-items: center;
           justify-items: start;
           grid-template-columns: subgrid;
-          grid-column: 1 / -1;
-
-          background-color: transparent;
-          border: none;
-          border-radius: var(--_nav-border-radius);
-          font-size: var(--fs-400);
-          padding: var(--_nav-padding-inline);
-
-          &:hover, &:focus-visible {
-            background-color: var(--clr-accent-secondary);
-            color: var(--clr-accent-primary);
-            
-            svg {
-              fill: var(--clr-accent-primary);
-            }
-          }
         }
       }
     }
@@ -144,8 +129,48 @@ body {
       }
     }
 
+    header svg,
     #my-projects svg {
       width: 1.25rem;
+    }
+
+    button {
+      grid-column: 1 / -1;
+
+      background-color: transparent;
+      border: none;
+      border-radius: var(--_nav-border-radius);
+      font-size: var(--fs-400);
+      padding: var(--_nav-padding-inline);
+      outline: none;
+
+      &:hover,
+      &:focus-visible {
+        background-color: var(--clr-accent-secondary);
+        color: var(--clr-accent-primary);
+
+        svg {
+          fill: var(--clr-accent-primary);
+        }
+      }
+    }
+
+    .nav-btn-container,
+    .nav-btn-small {
+      grid-column: 3;
+    }
+
+    .nav-btn-small:disabled {
+      cursor: default;
+
+      &:hover,
+      &:focus-visible {
+        background-color: transparent;
+
+        svg {
+          fill: var(--clr-text-secondary);
+        }
+      }
     }
   }
 }

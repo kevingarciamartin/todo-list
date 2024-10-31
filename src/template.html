@@ -8,7 +8,26 @@
   <body>
     <aside id="menu">
       <nav>
-        <header></header>
+        <header>
+          <div class="nav-btn-container">
+            <button class="nav-btn nav-btn-small" id="notifications" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>bell-outline</title>
+                <path
+                  d="M10 21H14C14 22.1 13.1 23 12 23S10 22.1 10 21M21 19V20H3V19L5 17V11C5 7.9 7 5.2 10 4.3V4C10 2.9 10.9 2 12 2S14 2.9 14 4V4.3C17 5.2 19 7.9 19 11V17L21 19M17 11C17 8.2 14.8 6 12 6S7 8.2 7 11V18H17V11Z"
+                />
+              </svg>
+            </button>
+            <button class="nav-btn nav-btn-small" id="collapse-menu" disabled>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>arrow-collapse-left</title>
+                <path
+                  d="M11.92,19.92L4,12L11.92,4.08L13.33,5.5L7.83,11H22V13H7.83L13.34,18.5L11.92,19.92M4,12V2H2V22H4V12Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </header>
         <ul id="primary-navigation">
           <li>
             <button class="nav-btn" id="add-task">
@@ -78,7 +97,15 @@
           </li>
         </ul>
         <ul id="my-projects">
-          <li>My Projects</li>
+          <li>
+            My Projects
+            <button class="nav-btn nav-btn-small" id="add-project">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <title>plus</title>
+                <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
+              </svg>
+            </button>
+          </li>
         </ul>
       </nav>
     </aside>

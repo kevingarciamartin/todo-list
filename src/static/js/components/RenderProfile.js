@@ -11,7 +11,7 @@ export default function RenderProfile() {
   img2.src = image;
   title.textContent = "Kevin";
 
-  header.appendChild(img1);
-  header.appendChild(title);
+  header.prepend(title);
+  header.prepend(img1);
   myProjects.prepend(img2);
 }
