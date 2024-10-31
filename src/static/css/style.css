@@ -59,6 +59,7 @@ body {
     svg {
       justify-self: center;
       width: 1.75rem;
+      aspect-ratio: 1 / 1;
     }
 
     img {
@@ -98,6 +99,7 @@ body {
 
     ul {
       display: grid;
+      row-gap: 0.25rem;
       grid-template-columns: subgrid;
       grid-column: 1 / -1;
 
@@ -140,6 +142,10 @@ body {
       svg {
         fill: var(--clr-accent-primary);
       }
+    }
+
+    #my-projects svg {
+      width: 1.25rem;
     }
   }
 }
