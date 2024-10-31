@@ -3,14 +3,14 @@
   --clr-neutral-500: #6c6c6c;
   --clr-neutral-900: #22201c;
 
+  --clr-beige: #fcfaf6;
   --clr-green: #318d04;
   --clr-pink: #f9e9e3;
   --clr-red: #dd4c3f;
-  --clr-yellow: #fcfaf6;
 
   --clr-accent-primary: var(--clr-red);
   --clr-accent-secondary: var(--clr-pink);
-  --clr-background-aside: var(--clr-yellow);
+  --clr-background-aside: var(--clr-beige);
   --clr-background-main: var(--clr-neutral-100);
   --clr-text-primary: var(--clr-neutral-900);
   --clr-text-secondary: var(--clr-neutral-500);
@@ -37,6 +37,7 @@ body {
 }
 
 #menu {
+  --_nav-border-radius: 0.5rem;
   --_menu-padding: var(--_body-padding, 1rem);
 
   position: fixed;
@@ -45,6 +46,102 @@ body {
   height: 100vh;
   width: var(--_menu-width);
   padding: var(--_menu-padding);
+
+  nav {
+    --_nav-padding-inline: 0.25rem;
+
+    display: grid;
+    column-gap: 0.5rem;
+    row-gap: 3rem;
+    grid-template-columns: auto 1fr;
+
+    img,
+    svg {
+      justify-self: center;
+      width: 1.75rem;
+    }
+
+    img {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: var(--_nav-border-radius);
+    }
+
+    ul,
+    h2 {
+      margin: 0;
+    }
+
+    header, ul li:not(:has(button)) {
+      padding-inline: var(--_nav-padding-inline);
+    }
+
+    svg {
+      fill: var(--clr-text-secondary);
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: subgrid;
+      align-items: center;
+      grid-column: 1 / -1;
+
+      img {
+        border-radius: 50%;
+      }
+
+      h2 {
+        color: var(--clr-text-secondary);
+        font-size: var(--fs-500);
+      }
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+
+      padding: 0;
+
+      li {
+        display: grid;
+        align-items: center;
+        grid-template-columns: subgrid;
+        grid-column: 1 / -1;
+
+        button {
+          display: grid;
+          align-items: center;
+          justify-items: start;
+          grid-template-columns: subgrid;
+          grid-column: 1 / -1;
+
+          background-color: transparent;
+          border: none;
+          border-radius: var(--_nav-border-radius);
+          font-size: var(--fs-400);
+          padding: var(--_nav-padding-inline);
+
+          &:hover, &:focus-visible {
+            background-color: var(--clr-accent-secondary);
+            color: var(--clr-accent-primary);
+            
+            svg {
+              fill: var(--clr-accent-primary);
+            }
+          }
+        }
+      }
+    }
+
+    #primary-navigation li:first-of-type button {
+      color: var(--clr-accent-primary);
+
+      svg {
+        fill: var(--clr-accent-primary);
+      }
+    }
+  }
 }
 
 #content {
