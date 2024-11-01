@@ -1,8 +1,9 @@
-export const createTask = (title, description, dueDate, priority) => {
-    return {
-      title,
-      description,
-      dueDate,
-      priority,
-    };
-  }
+export const createTask = (title, description, dueDate, priority, project) => {
+  return {
+    title,
+    description,
+    dueDate,
+    priority,
+    project,
+  };
+};

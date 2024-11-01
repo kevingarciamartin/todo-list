@@ -6,19 +6,20 @@ import { RenderAddItemModal, HandleModal } from "./static/js/components/Modal";
 import { createTask } from "./static/js/components/task";
 import { createProject } from "./static/js/components/project";
 import { addDays } from "date-fns";
+import { RenderAllTasksToMain } from "./static/js/components/RenderTasksToMain";
 
 const app = (() => {
   const projects = [];
   const defaultProject = createProject("Default Project");
 
   defaultProject.addTask(
-    createTask("Task 1", "Task 1 description.", addDays(new Date(), 15), 2)
+    createTask("Task 1", "Task 1 description.", addDays(new Date(), 15), 2, defaultProject.title)
   );
   defaultProject.addTask(
-    createTask("Task 2", "Task 2 description.", addDays(new Date(), 65), 0)
+    createTask("Task 2", "Task 2 description.", addDays(new Date(), 65), 0, defaultProject.title)
   );
   defaultProject.addTask(
-    createTask("Task 3", "Task 3 description.", addDays(new Date(), 1), 1)
+    createTask("Task 3", "Task 3 description.", addDays(new Date(), 1), 1, defaultProject.title)
   );
 
   projects.push(defaultProject);
@@ -38,7 +39,7 @@ const renderApp = (() => {
         RenderAddItemModal("task", app.projects);
         HandleModal(app.projects);
       } else if (button.id === "tasks") {
-        console.log("Tasks");
+        RenderAllTasksToMain(app.projects);
       } else if (button.id === "today") {
         console.log("Today");
       } else if (button.id === "upcoming") {

@@ -124,15 +124,21 @@ export const HandleModal = (projectList) => {
                 ? addDays(new Date(), 1)
                 : parseISO(dueDate.value);
             let taskPriority;
-            if (priority.value === '' || priority.value === 'Low') {
+            if (priority.value === "" || priority.value === "Low") {
               taskPriority = 0;
-            } else if (priority.value === 'Medium') {
+            } else if (priority.value === "Medium") {
               taskPriority = 1;
-            } else if (priority.value === 'High') {
+            } else if (priority.value === "High") {
               taskPriority = 2;
             }
 
-            const task = createTask(taskTitle, taskDescription, taskDueDate, taskPriority)
+            const task = createTask(
+              taskTitle,
+              taskDescription,
+              taskDueDate,
+              taskPriority,
+              taskProject.title
+            );
             taskProject.addTask(task);
 
             RenderProjectTasksToMain(taskProject);
