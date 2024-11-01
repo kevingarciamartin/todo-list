@@ -235,21 +235,34 @@ body {
         }
 
         svg {
-          width: var(--fs-400);
+          width: var(--fs-300);
         }
       }
 
       .task-footer {
         justify-content: space-between;
 
-        .task-due-date {
+        .task-due-date svg {
+          fill: var(--clr-green);
+        }
+
+        span {
+          color: var(--clr-text-secondary);
+          font-size: var(--fs-300);
+
+          svg {
+            fill: var(--clr-text-secondary);
+          }
+        }
+
+        .task-due-date,
+        span {
           display: flex;
           align-items: center;
           gap: 0.25rem;
 
           svg {
-            fill: var(--clr-green);
-            width: var(--fs-400);
+            width: var(--fs-300);
           }
         }
       }
@@ -271,12 +284,14 @@ dialog {
   border-radius: 1rem;
   padding-inline: 0;
 
-  input {
-    background-color: transparent;
-    border: none;
-    font-size: 2rem;
-    outline: none;
+  form > * {
     margin-inline: 1rem;
+    border: none;
+    outline: none;
+  }
+
+  form > input:first-of-type {
+    font-size: 2rem;
   }
 
   hr {
@@ -288,6 +303,12 @@ dialog {
     display: flex;
     align-items: center;
     justify-content: end;
+    gap: 1rem;
+
+    fieldset {
+      border: none;
+      padding: 0;
+    }
 
     .btn-container {
       display: flex;
@@ -298,6 +319,7 @@ dialog {
       button {
         border: 1px solid var(--clr-border);
         border-radius: 0.25rem;
+        padding: 0.25rem;
       }
 
       #modal-submit {
@@ -305,6 +327,16 @@ dialog {
         border: none;
         color: white;
       }
+    }
+  }
+}
+
+#add-task-modal {
+  form {
+    display: grid;
+
+    .form-container {
+      justify-content: space-between;
     }
   }
 }
