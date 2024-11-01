@@ -12,13 +12,13 @@ const app = (() => {
   const defaultProject = createProject("Default Project");
 
   defaultProject.addTask(
-    createTask("Task 1", "Task 1 description.", addDays(new Date(), 15), 'high')
+    createTask("Task 1", "Task 1 description.", addDays(new Date(), 15), 2)
   );
   defaultProject.addTask(
-    createTask("Task 2", "Task 2 description.", addDays(new Date(), 65), 'low')
+    createTask("Task 2", "Task 2 description.", addDays(new Date(), 65), 0)
   );
   defaultProject.addTask(
-    createTask("Task 3", "Task 3 description.", addDays(new Date(), 1), 'medium')
+    createTask("Task 3", "Task 3 description.", addDays(new Date(), 1), 1)
   );
 
   projects.push(defaultProject);
