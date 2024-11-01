@@ -43,8 +43,8 @@ body {
   display: grid;
   grid-template-columns:
     var(--_menu-width) [main-start]
-    var(--_body-padding) [content-start]
-    1fr [content-end] var(--_body-padding) [main-end];
+    1fr [content-start]
+    min(75ch, calc(100% - var(--_body-padding) * 2)) [content-end] 1fr [main-end];
 
   font-family: var(--ff-base);
 }
