@@ -9,6 +9,7 @@
   --clr-pink: #f9e9e3;
   --clr-red: #dd4c3f;
   --clr-orange: #c77b00;
+  --clr-yellow: #e7a02e;
 
   --clr-accent-primary: var(--clr-red);
   --clr-accent-secondary: var(--clr-pink);
@@ -25,6 +26,14 @@
   --fs-300: 0.85rem;
   --fs-400: 1rem;
   --fs-500: 1.15rem;
+}
+
+.priority-medium {
+  fill: var(--clr-yellow);
+}
+
+.priority-high {
+  fill: var(--clr-red);
 }
 
 body {
@@ -133,6 +142,14 @@ body {
       }
     }
 
+    #my-projects {
+      font-weight: bold;
+
+      > li {
+        color: var(--clr-text-secondary);
+      }
+    }
+
     header svg,
     #my-projects svg {
       width: 1.25rem;
@@ -164,8 +181,9 @@ body {
       grid-column: 3;
     }
 
-    .nav-btn-small:disabled {
+    .nav-btn:disabled {
       cursor: default;
+      color: var(--clr-text-secondary);
 
       &:hover,
       &:focus-visible {
@@ -182,11 +200,61 @@ body {
 #content {
   --_main-padding: var(--_body-padding, 1rem);
 
-  grid-column: main-start / main-end;
+  grid-column: content-start / content-end;
 
   background-color: var(--clr-background-main);
   padding-block: var(--_main-padding);
-  height: 300vh;
+
+  .task-list {
+    list-style: none;
+    padding: 0;
+
+    .task {
+      border-top: 1px solid var(--clr-border);
+      padding: 1rem 3px;
+
+      &:last-of-type {
+        border-bottom: 1px solid var(--clr-border);
+      }
+
+      .task-header,
+      .task-footer {
+        display: flex;
+        align-items: center;
+      }
+
+      .task-header {
+        gap: 0.5rem;
+
+        input[type="checkbox"] {
+          margin: 0;
+        }
+
+        h4 {
+          margin: 0;
+        }
+
+        svg {
+          width: var(--fs-400);
+        }
+      }
+
+      .task-footer {
+        justify-content: space-between;
+
+        .task-due-date {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+
+          svg {
+            fill: var(--clr-green);
+            width: var(--fs-400);
+          }
+        }
+      }
+    }
+  }
 }
 
 dialog {
@@ -231,7 +299,7 @@ dialog {
         border: 1px solid var(--clr-border);
         border-radius: 0.25rem;
       }
-      
+
       #modal-submit {
         background-color: var(--clr-action);
         border: none;

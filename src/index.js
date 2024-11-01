@@ -8,20 +8,20 @@ import {
 } from "./static/js/components/Modal";
 import { createTask } from "./static/js/components/task";
 import { createProject } from "./static/js/components/project";
-import { formatISO9075, addDays } from "date-fns";
+import { addDays } from "date-fns";
 
 const app = (() => {
   const projects = [];
   const defaultProject = createProject("Default Project");
 
   defaultProject.addTask(
-    createTask("Task 1", "Task 1 description.", new Date(), 2)
+    createTask("Task 1", "Task 1 description.", addDays(new Date(), 15), 2)
   );
   defaultProject.addTask(
-    createTask("Task 2", "Task 2 description.", new Date(), 0)
+    createTask("Task 2", "Task 2 description.", addDays(new Date(), 65), 0)
   );
   defaultProject.addTask(
-    createTask("Task 3", "Task 2 description.", new Date(), 1)
+    createTask("Task 3", "Task 2 description.", addDays(new Date(), 1), 1)
   );
 
   projects.push(defaultProject);
