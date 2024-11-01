@@ -1,4 +1,4 @@
-import { formatDistance, isEqual, format } from "date-fns";
+import { formatDistance, format, isEqual, isAfter } from "date-fns";
 
 export const RenderProjectTasksToMain = (project) => {
   const content = document.querySelector("#content");
@@ -140,5 +140,23 @@ export const RenderTodaysTasksToMain = (projectList) => {
   RenderTasksToMain(
     todaysTasks.toSorted((a, b) => a["dueDate"] - b["dueDate"]),
     "Today's tasks"
+  );
+};
+
+export const RenderUpcomingTasksToMain = (projectList) => {
+  const upcomingTasks = [];
+
+  projectList.forEach((project) => {
+    const tasks = project.getTasks();
+    tasks
+      .filter((t) =>
+        isAfter(format(t.dueDate, "yyyy-MM-dd"), format(new Date(), "yyyy-MM-dd"))
+      )
+      .map((t) => upcomingTasks.push(t));
+  });
+
+  RenderTasksToMain(
+    upcomingTasks.toSorted((a, b) => a["dueDate"] - b["dueDate"]),
+    "Upcoming tasks"
   );
 };
