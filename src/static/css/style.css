@@ -43,8 +43,8 @@ body {
   display: grid;
   grid-template-columns:
     var(--_menu-width) [main-start]
-    1fr [content-start]
-    min(75ch, calc(100% - var(--_body-padding) * 2)) [content-end] 1fr [main-end];
+    var(--_body-padding) [content-start]
+    1fr [content-end] var(--_body-padding) [main-end];
 
   font-family: var(--ff-base);
 }
@@ -201,9 +201,11 @@ body {
   --_main-padding: var(--_body-padding, 1rem);
 
   grid-column: content-start / content-end;
+  justify-self: center;
 
   background-color: var(--clr-background-main);
   padding-block: var(--_main-padding);
+  width: min(75ch, 100%);
 
   .task-list {
     list-style: none;
