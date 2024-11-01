@@ -1,10 +1,9 @@
-import { formatDistance } from "date-fns";
+import { formatDistance, isEqual, format } from "date-fns";
 
 export const RenderProjectTasksToMain = (project) => {
   const content = document.querySelector("#content");
 
   content.innerHTML = `<h2>${project.title}</h2>`;
-
 
   if (project.getNumberOfTasks() === 0) {
     const p = document.createElement("p");
@@ -62,7 +61,6 @@ export const RenderTasksToMain = (tasks, title) => {
 
   content.innerHTML = `<h2>${title}</h2>`;
 
-
   if (tasks.length === 0) {
     const p = document.createElement("p");
     p.textContent = "You have no tasks.";
@@ -109,7 +107,6 @@ export const RenderTasksToMain = (tasks, title) => {
             </div>
           `;
       ul.appendChild(li);
-      console.log(task)
     });
   }
 };
@@ -122,5 +119,26 @@ export const RenderAllTasksToMain = (projectList) => {
     tasks.map((t) => allTasks.push(t));
   });
 
-  RenderTasksToMain(allTasks.toSorted((a, b) => a['dueDate'] - b['dueDate']), 'All tasks');
+  RenderTasksToMain(
+    allTasks.toSorted((a, b) => a["dueDate"] - b["dueDate"]),
+    "All tasks"
+  );
+};
+
+export const RenderTodaysTasksToMain = (projectList) => {
+  const todaysTasks = [];
+
+  projectList.forEach((project) => {
+    const tasks = project.getTasks();
+    tasks
+      .filter((t) =>
+        isEqual(format(t.dueDate, "yyyy-MM-dd"), format(new Date(), "yyyy-MM-dd"))
+      )
+      .map((t) => todaysTasks.push(t));
+  });
+
+  RenderTasksToMain(
+    todaysTasks.toSorted((a, b) => a["dueDate"] - b["dueDate"]),
+    "Today's tasks"
+  );
 };

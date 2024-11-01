@@ -6,7 +6,7 @@ import { RenderAddItemModal, HandleModal } from "./static/js/components/Modal";
 import { createTask } from "./static/js/components/task";
 import { createProject } from "./static/js/components/project";
 import { addDays } from "date-fns";
-import { RenderAllTasksToMain } from "./static/js/components/RenderTasksToMain";
+import { RenderAllTasksToMain, RenderTodaysTasksToMain } from "./static/js/components/RenderTasksToMain";
 
 const app = (() => {
   const projects = [];
@@ -41,7 +41,7 @@ const renderApp = (() => {
       } else if (button.id === "tasks") {
         RenderAllTasksToMain(app.projects);
       } else if (button.id === "today") {
-        console.log("Today");
+        RenderTodaysTasksToMain(app.projects);        
       } else if (button.id === "upcoming") {
         console.log("Upcoming");
       } else if (button.id === "completed") {
